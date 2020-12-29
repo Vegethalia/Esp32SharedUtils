@@ -5,6 +5,8 @@
 // this class methods to choose the font, size etc.
 // It is possible to add a default delay after adding a new line, just to be sure that they can be read.
 
+#ifdef USE_SCREENDEBUGGER
+
 #include <U8g2lib.h>
 #include <list>
 
@@ -54,3 +56,5 @@ private:
 	uint16_t _FirstLine; //Index of _ThePhrases with the 1st line to show.
 	uint32_t _LinesAdded; //Keeps a counter of the number of lines inserted
 };
+
+#endif

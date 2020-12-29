@@ -1,6 +1,8 @@
 #include <string>
 #include "ScreenDebugger.h"
 
+#ifdef USE_SCREENDEBUGGER
+
 ScreenDebugger::ScreenDebugger(U8G2* pTheScreen, uint16_t linesBeforeDelay, uint16_t delayAfterLineMS, bool showLineNumber)
 : _pTheScreen(pTheScreen)
 , _TheDelay(delayAfterLineMS)
@@ -127,3 +129,4 @@ void ScreenDebugger::DrawLines()
 		}
 	} while(_pTheScreen->nextPage());
 }
+#endif
