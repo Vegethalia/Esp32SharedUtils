@@ -2,6 +2,8 @@
 // Wrapper around <Adafruit_BME280.h>
 // Just to make life easier
 
+#ifdef USE_MYBME280
+
 #include <Adafruit_BME280.h>
 
 #define I2C_ADDRESS_BME280 0x76
@@ -63,3 +65,5 @@ private:
 	float _LastPressure;
 	float _LastHumidity;
 };
+
+#endif

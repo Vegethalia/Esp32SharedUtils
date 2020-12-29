@@ -1,5 +1,7 @@
 #include "MyBME280.h"
 
+#ifdef USE_MYBME280
+
 MyBME280::MyBME280(bool showDebugInfo)
 :_TheWire(Wire)
 , _AddrBME(I2C_ADDRESS_BME280)
@@ -19,7 +21,7 @@ MyBME280::ERROR MyBME280::Init(uint16_t addrBME, TwoWire &theWire, uint16_t retr
 	auto thistime=millis();
 
 	ShowDebugMessageF("Detecting BME280 on address 0x%X...", I2C_ADDRESS_BME280);
-  bool status = _TheBME.begin(I2C_ADDRESS_BME280, &theWire);// &Wire); 
+  bool status = _TheBME.begin(I2C_ADDRESS_BME280, &theWire);// &Wire);
   while(!status) {
     ShowDebugMessageF("Could not find a valid BME280 sensor, check wiring!");
 		if((millis()-thistime)>retriesInMs) {
@@ -89,8 +91,9 @@ void MyBME280::ShowDebugMessage(const char *pFileName, int line, const char *pMe
     va_start(args, pTheMsg);
 		vsnprintf(buffer, sizeof(buffer), pTheMsg, args);
     va_end(args);
-		snprintf(bufferLog, sizeof(bufferLog), "[%s:%d] %s(): %s\r\n", pFileName, line, pMethodName, buffer); 
+		snprintf(bufferLog, sizeof(bufferLog), "[%s:%d] %s(): %s\r\n", pFileName, line, pMethodName, buffer);
 		log_printf(bufferLog);
 	}
 }
 
+#endif
