@@ -1,5 +1,7 @@
 #include <Wire.h>
 
+//Copied from LILYGO github examples
+
 #if defined(SIM800L_IP5306_VERSION_20190610)
 
 #define MODEM_RST             5
