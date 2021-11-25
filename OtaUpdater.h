@@ -1,4 +1,7 @@
-///This class handles the OtaUpdate process in ESP32
+///This class handles the OtaUpdate process in ESP32.
+///The OTA can be launched using the command line tool "espota.exe"
+///    ex: C:\Users\theUserName\.platformio\packages\framework-arduinoespressif32\tools\espota.exe
+///        -f .\.pio\build\az-delivery-devkit-v4\firmware.bin -d -r -t 10 -i 192.168.1.168 -p 3232
 ///Call Setup from setup() and then in each loop() call Process()
 class OtaUpdater
 {
