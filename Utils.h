@@ -35,9 +35,9 @@ public:
 	//Based on https://www.movable-type.co.uk/scripts/latlong.html by Chris Veness
 	static float FastDistanceBetween2Points(float Lat1, float Lon1, float Lat2, float Lon2)
 	{
-//		const x = (λ2 - λ1) * Math.cos((φ1 + φ2) / 2);
-//		const y = (φ2 - φ1);
-//		const d = Math.sqrt(x * x + y * y) * R;
+		//		const x = (λ2 - λ1) * Math.cos((φ1 + φ2) / 2);
+		//		const y = (φ2 - φ1);
+		//		const d = Math.sqrt(x * x + y * y) * R;
 
 		float dLat = radians(Lat2 - Lat1);
 		float dLatAdd = radians(Lon2 + Lon1);
@@ -49,5 +49,23 @@ public:
 		return d;
 	}
 
+	//Splits the input strim into 2 values, delimited by the delimiters specified in pDelims.
+	//Only returns the first 2 values
+	//ex:  SplitStringFirst2Values("mivar=red=kaka", &pstr1, &pstr2, "=")
+	//     will return pstr1="mivar" pstr2="red"
+	//The method returns true if two values were successfully extracted.
+	static bool SplitString2Values(char *pInputStr, char **pStr1, char**pStr2, const char *pDelims)
+	{
+		char *ptr=strtok(pInputStr, pDelims);
+		if(ptr) {
+			*pStr1=ptr;
+			ptr = strtok(nullptr, pDelims);
+			if(ptr) {
+				*pStr2=ptr;
+				return true;
+			}
+		}
+		return false;
+	}
 
 };
